@@ -20,6 +20,7 @@ export function serializeScenarioToURL(scenarioState: State, params: AllParams):
     ...params,
     current: scenarioState.current,
     containment: scenarioState.data.containment.reduction,
+    ageDistribution: scenarioState.ageDistribution,
   }
 
   return encodeURIComponent(JSON.stringify(toSave))
@@ -62,6 +63,7 @@ export function deserializeScenarioFromURL(initState: State): State {
           },
           simulation: obj.simulation,
         },
+        ageDistribution: obj.ageDistribution,
       }
     } catch (error) {
       console.error('Error while parsing URL :', error.message)
